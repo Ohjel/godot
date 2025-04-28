@@ -6,10 +6,8 @@ import 'utils.dart';
 Maze loopErasedRandomWalks(
     {required int width,
     required int height,
-    int vertexSize = 1,
     Random? random}) {
   assert(width > 0 && height > 0);
-  assert(vertexSize > 0);
   random ??= Random();
   final vertices = List<MazeVertex>.generate(
       width * height, (i) => (x: i % width, y: i ~/ width));
@@ -50,7 +48,6 @@ Maze loopErasedRandomWalks(
   return Maze(
       vertices: vertices,
       edges: edges,
-      vertexSize: vertexSize,
       width: width,
       height: height);
 }

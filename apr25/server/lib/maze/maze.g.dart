@@ -25,7 +25,6 @@ Maze _$MazeFromJson(Map<String, dynamic> json) => Maze(
                 ),
               ))
           .toList(),
-      vertexSize: (json['vertexSize'] as num).toInt(),
       width: (json['width'] as num).toInt(),
       height: (json['height'] as num).toInt(),
     );
@@ -33,7 +32,6 @@ Maze _$MazeFromJson(Map<String, dynamic> json) => Maze(
 Map<String, dynamic> _$MazeToJson(Maze instance) => <String, dynamic>{
       'width': instance.width,
       'height': instance.height,
-      'vertexSize': instance.vertexSize,
       'vertices': instance.vertices
           .map((e) => <String, dynamic>{
                 'x': e.x,

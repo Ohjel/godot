@@ -4,7 +4,6 @@ const smallMaze = (
   maze: Maze(
     width: 2,
     height: 3,
-    vertexSize: 1,
     edges: [
       (a: 1, b: 3),
       (a: 0, b: 1),
@@ -36,7 +35,6 @@ const mediumMaze = (
   maze: Maze(
     width: 8,
     height: 10,
-    vertexSize: 1,
     edges: [
       (a: 62, b: 63),
       (a: 61, b: 62),

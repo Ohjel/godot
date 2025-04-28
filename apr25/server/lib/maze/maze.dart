@@ -9,14 +9,12 @@ typedef MazeEdge = ({int a, int b});
 class Maze {
   final int width;
   final int height;
-  final int vertexSize;
   final List<MazeVertex> vertices;
   final List<MazeEdge> edges;
 
   const Maze(
       {required this.vertices,
       required this.edges,
-      required this.vertexSize,
       required this.width,
       required this.height});
 
