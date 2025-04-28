@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://ldrrkrfsxe86"]
+
+[ext_resource type="Script" uid="uid://c02ftoxcv5pxi" path="res://test_node.gd" id="1_0f027"]
+[ext_resource type="Script" uid="uid://dc0nomue5xxoo" path="res://main_scene.gd" id="1_2c62f"]
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_2c62f")
+
+[node name="TestNode" type="Node" parent="."]
+script = ExtResource("1_0f027")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1151.0
+offset_bottom = 649.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -119.5
+offset_top = -66.0
+offset_right = 119.5
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Time elapsed:
+0s"
+horizontal_alignment = 1
+vertical_alignment = 1
