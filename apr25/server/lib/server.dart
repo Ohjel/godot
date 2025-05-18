@@ -38,17 +38,15 @@ class Server {
     final start = int.parse(request.url.queryParameters['start'] ?? '0');
     final end = int.parse(
         request.url.queryParameters['end'] ?? '${width * height - 1}');
+    final outputJson =
+        bool.parse(request.url.queryParameters['json'] ?? 'false');
 
     final maze = loopErasedRandomWalks(width: width, height: height);
     final path = solved ? solveMaze(maze, start, end) : null;
 
-    final body = '''
-${formatMazeToString(maze, path)}
-
----
-
-${json.encode(maze.toJson())}
-''';
+    final body = outputJson
+        ? json.encode(maze.toJson())
+        : formatMazeToString(maze, path);
     return Response.ok(body, headers: {
       'Content-Type': 'text/plain; charset=utf-8',
     });

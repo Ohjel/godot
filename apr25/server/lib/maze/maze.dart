@@ -79,8 +79,27 @@ class Maze {
           Direction.left => (3, 3),
         };
       case 2:
+        final stateError = StateError(
+            'Neighbor directions unallowed state: $neighborDirections');
         neighborDirections.sort();
-        return (2, 3);
+        return switch (neighborDirections[0]) {
+          Direction.up => switch (neighborDirections[1]) {
+              Direction.right => (1, 2),
+              Direction.down => (0, 1),
+              Direction.left => (3, 2),
+              _ => throw stateError,
+            },
+          Direction.right => switch (neighborDirections[1]) {
+              Direction.down => (1, 0),
+              Direction.left => (2, 3),
+              _ => throw stateError
+            },
+          Direction.down => switch (neighborDirections[1]) {
+              Direction.left => (3, 0),
+              _ => throw stateError
+            },
+          Direction.left => throw stateError
+        };
       case 3:
         final blockedDirection = Direction.values
             .singleWhere((d) => !neighborDirections.contains(d));
@@ -101,9 +120,9 @@ class Maze {
 
 enum Direction implements Comparable<Direction> {
   up(0, -1),
-  left(-1, 0),
   right(1, 0),
-  down(0, 1);
+  down(0, 1),
+  left(-1, 0);
 
   const Direction(this.x, this.y);
 
