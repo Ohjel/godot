@@ -4,13 +4,11 @@ import 'maze.dart';
 import 'utils.dart';
 
 Maze loopErasedRandomWalks(
-    {required int width,
-    required int height,
-    Random? random}) {
+    {required int width, required int height, Random? random}) {
   assert(width > 0 && height > 0);
   random ??= Random();
   final vertices = List<MazeVertex>.generate(
-      width * height, (i) => (x: i % width, y: i ~/ width));
+      width * height, (i) => MazeVertex(x: i % width, y: i ~/ width));
   final edges = <MazeEdge>[];
 
   final frontier = List.generate(width * height, (i) => i)..shuffle(random);
@@ -45,9 +43,5 @@ Maze loopErasedRandomWalks(
     }
   }
 
-  return Maze(
-      vertices: vertices,
-      edges: edges,
-      width: width,
-      height: height);
+  return Maze(vertices: vertices, edges: edges, width: width, height: height);
 }

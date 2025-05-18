@@ -1,4 +1,5 @@
 import 'package:server/maze/utils.dart';
+import 'package:server/maze/maze.dart';
 import 'package:test/test.dart';
 
 import 'const_mazes.dart';
@@ -13,7 +14,7 @@ void main() {
   });
 
   test('neighborIndex', () {
-    expect(neighborIndexes([(x: 0, y: 0)], 0, 1, 1), []);
+    expect(neighborIndexes([MazeVertex(x: 0, y: 0)], 0, 1, 1), []);
     final sm = smallMaze.maze;
     expect(neighborIndexes(sm.vertices, 0, sm.width, sm.height), [1, 2]);
     expect(neighborIndexes(sm.vertices, 4, sm.width, sm.height), [2, 5]);

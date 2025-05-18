@@ -27,8 +27,8 @@ Iterable<int> accessibleNeighborIndexes(Maze maze, int index) {
 
 MazeEdge edgeFrom(int a, int b) {
   return switch (a < b) {
-    true => (a: a, b: b),
-    false => (a: b, b: a),
+    true => MazeEdge(a: a, b: b),
+    false => MazeEdge(a: b, b: a),
   };
 }
 

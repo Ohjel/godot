@@ -1,3 +1,4 @@
+import 'dart:convert' show json;
 import 'package:server/maze/generation.dart';
 import 'package:server/maze/utils.dart';
 import 'package:server/solving.dart';
@@ -41,7 +42,14 @@ class Server {
     final maze = loopErasedRandomWalks(width: width, height: height);
     final path = solved ? solveMaze(maze, start, end) : null;
 
-    return Response.ok(formatMazeToString(maze, path), headers: {
+    final body = '''
+${formatMazeToString(maze, path)}
+
+---
+
+${json.encode(maze.toJson())}
+''';
+    return Response.ok(body, headers: {
       'Content-Type': 'text/plain; charset=utf-8',
     });
   }
